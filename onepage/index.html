@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="假假咖啡 JIA JIA COFFEE，為手沖咖啡喜好者嚴選每日好豆。每週新鮮烘焙，以純粹風味陪伴日常。">
+  <title>假假咖啡 JIA JIA COFFEE｜手沖咖啡喜好者的日常好豆專門店</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --espresso: #25170f;
+      --roast: #543722;
+      --coffee: #8b5937;
+      --caramel: #c48b58;
+      --cream: #f8f5ef;
+      --paper: #fffefa;
+      --sage: #687460;
+      --ink: #2a211b;
+      --muted: #766b61;
+      --line: #e6ded3;
+      --gold: #d8a254;
+      --serif: "Noto Serif TC", serif;
+      --sans: "Noto Sans TC", sans-serif;
+      --en: "Outfit", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--cream); color: var(--ink); font: 16px/1.75 var(--sans); }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+    .announcement { padding: 8px 16px; background: var(--espresso); color: #f4dfc5; text-align: center; font-size: 12px; letter-spacing: .04em; }
+    .announcement strong { color: #f4c883; }
+    .header { position: sticky; z-index: 20; top: 0; background: rgba(248,245,239,.96); border-bottom: 1px solid var(--line); backdrop-filter: blur(12px); }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex-shrink: 0; }
+    .brand-mark { width: 40px; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--espresso); color: #f1c27d; font: 700 22px var(--serif); }
+    .brand-name { display: block; color: var(--espresso); font: 700 17px/1.2 var(--serif); letter-spacing: .06em; }
+    .brand-en { display: block; margin-top: 3px; color: var(--coffee); font: 600 9px/1 var(--en); letter-spacing: .19em; }
+    .nav-links { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 32px); list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: #57483d; font-size: 13px; font-weight: 600; }
+    .nav-links a:hover { color: var(--coffee); }
+    .nav-tools { display: flex; align-items: center; gap: 12px; }
+    .cart-button, .menu-button { min-width: 42px; height: 42px; border: 1px solid var(--line); background: var(--paper); color: var(--espresso); }
+    .cart-button { display: inline-flex; align-items: center; gap: 8px; padding: 0 12px; font-size: 13px; }
+    .cart-count { display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; background: var(--coffee); color: white; font: 600 11px var(--en); }
+    .menu-button { display: none; font-size: 20px; }
+    .hero { position: relative; min-height: 620px; display: grid; align-items: center; overflow: hidden; color: white; background: var(--espresso); }
+    .hero::before { position: absolute; inset: 0 0 0 44%; background: linear-gradient(90deg, var(--espresso) 0%, rgba(37,23,15,.52) 34%, rgba(37,23,15,.06) 100%), url("https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1500&q=85") center 54%/cover; content: ""; }
+    .hero::after { position: absolute; right: 10%; bottom: -170px; width: 480px; height: 480px; border: 1px solid rgba(235,196,145,.27); border-radius: 50%; box-shadow: 0 0 0 35px rgba(235,196,145,.05), 0 0 0 80px rgba(235,196,145,.04); content: ""; pointer-events: none; }
+    .hero-content { position: relative; z-index: 1; max-width: 650px; padding-block: 96px; }
+    .eyebrow { margin: 0 0 18px; color: var(--caramel); font: 600 11px var(--en); letter-spacing: .22em; text-transform: uppercase; }
+    .hero h1 { max-width: 640px; margin: 0; font: 900 clamp(42px, 6vw, 70px)/1.27 var(--serif); letter-spacing: .02em; }
+    .hero h1 em { color: #e9bd83; font-style: normal; }
+    .hero-copy { max-width: 520px; margin: 22px 0 30px; color: rgba(255,255,255,.8); font-size: 15px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 0 20px; border: 1px solid transparent; transition: .2s ease; font-size: 13px; font-weight: 700; }
+    .button:hover { transform: translateY(-2px); }
+    .button-gold { background: #e2b474; color: var(--espresso); }
+    .button-gold:hover { background: #f0c98e; }
+    .button-ghost { border-color: rgba(255,255,255,.6); color: white; }
+    .button-ghost:hover { background: white; color: var(--espresso); }
+    .hero-note { margin-top: 46px; color: rgba(255,255,255,.62); font: 500 10px var(--en); letter-spacing: .17em; }
+    .hero-stamp { position: absolute; right: 8%; bottom: 56px; z-index: 1; width: 145px; height: 145px; display: grid; place-content: center; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; color: white; text-align: center; transform: rotate(8deg); }
+    .hero-stamp strong { font: 600 32px var(--en); }
+    .hero-stamp span { font-size: 11px; }
+    .promise { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--line); background: var(--paper); }
+    .promise div { padding: 20px 12px; text-align: center; color: var(--roast); font-size: 13px; }
+    .promise div + div { border-left: 1px solid var(--line); }
+    .promise strong { color: var(--coffee); }
+    .section { padding: 96px 0; }
+    .section-head { max-width: 700px; margin: 0 auto 42px; text-align: center; }
+    .section-kicker { margin: 0 0 9px; color: var(--coffee); font: 600 10px var(--en); letter-spacing: .2em; }
+    .section-title { margin: 0; color: var(--espresso); font: 700 clamp(29px, 4vw, 43px)/1.4 var(--serif); }
+    .section-copy { margin: 12px 0 0; color: var(--muted); font-size: 14px; }
+    .products { background: #f0ede5; }
+    .filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 0 28px; }
+    .filter { padding: 8px 16px; border: 1px solid #d8cfc3; background: transparent; color: #594c40; font-size: 12px; }
+    .filter.active, .filter:hover { border-color: var(--espresso); background: var(--espresso); color: white; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .product { overflow: hidden; border: 1px solid #e1d9cf; background: var(--paper); transition: transform .25s, box-shadow .25s; }
+    .product:hover { transform: translateY(-4px); box-shadow: 0 16px 34px rgba(44,31,20,.12); }
+    .product-image { position: relative; height: 230px; background: #d8c7b2; }
+    .product-image img { height: 100%; }
+    .roast-label { position: absolute; top: 14px; left: 14px; padding: 4px 9px; background: var(--espresso); color: white; font-size: 10px; }
+    .product-info { padding: 19px; }
+    .origin { margin: 0 0 5px; color: var(--coffee); font: 600 10px var(--en); letter-spacing: .09em; }
+    .product h3 { margin: 0; color: var(--espresso); font: 700 20px var(--serif); }
+    .flavor { min-height: 27px; margin: 8px 0 17px; color: var(--muted); font-size: 12px; }
+    .product-bottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 13px; border-top: 1px solid var(--line); }
+    .price { color: var(--roast); font: 600 17px var(--en); }
+    .price small { color: var(--muted); font: 400 11px var(--sans); }
+    .add-button { min-height: 36px; padding: 0 12px; border: 1px solid var(--coffee); background: transparent; color: var(--coffee); font-size: 11px; font-weight: 700; }
+    .add-button:hover { background: var(--coffee); color: white; }
+    .story { background: var(--paper); }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 70px; }
+    .story-visual { min-height: 420px; position: relative; display: grid; place-items: center; background: linear-gradient(140deg, #e9dfd0, #c9b59c); overflow: hidden; }
+    .story-visual::before, .story-visual::after { position: absolute; border: 1px solid rgba(255,255,255,.62); border-radius: 50%; content: ""; }
+    .story-visual::before { width: 310px; height: 310px; }
+    .story-visual::after { width: 230px; height: 230px; }
+    .story-mark { position: relative; z-index: 1; color: var(--espresso); font: 900 80px var(--serif); }
+    .story-caption { position: absolute; right: 18px; bottom: 18px; z-index: 2; padding: 13px 17px; background: var(--espresso); color: #f2e5d4; font-size: 12px; }
+    .story-copy h2 { margin: 0 0 17px; color: var(--espresso); font: 700 clamp(28px, 3.4vw, 39px)/1.5 var(--serif); }
+    .story-copy p { color: var(--muted); font-size: 14px; }
+    .values { display: grid; gap: 10px; margin: 22px 0 0; padding: 0; list-style: none; color: var(--roast); font-size: 13px; }
+    .values li::before { margin-right: 9px; color: var(--coffee); content: "✓"; }
+    .brew { background: #e9e6dd; }
+    .brew-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+    .brew-panel { padding: 34px; background: var(--espresso); color: white; }
+    .brew-panel h3 { margin: 0 0 25px; color: #e9bd83; font: 600 21px var(--serif); }
+    .range-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin: 20px 0; font-size: 13px; }
+    .range-row input { width: 58%; accent-color: #dda95e; }
+    .range-value { min-width: 55px; color: #f0c98e; font: 600 18px var(--en); text-align: right; }
+    .ratio-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .ratio { padding: 7px 11px; border: 1px solid rgba(255,255,255,.25); background: transparent; color: white; font: 500 12px var(--en); }
+    .ratio.active, .ratio:hover { border-color: var(--gold); background: var(--gold); color: var(--espresso); }
+    .brew-result { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 24px; background: rgba(255,255,255,.18); }
+    .result-cell { padding: 13px; background: var(--espresso); }
+    .result-cell span { display: block; color: #d9c8b5; font-size: 11px; }
+    .result-cell strong { color: white; font: 600 22px var(--en); }
+    .steps { display: grid; gap: 0; margin-top: 24px; }
+    .step { display: grid; grid-template-columns: 48px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid #d8d1c6; }
+    .step-num { color: var(--coffee); font: 600 20px var(--en); }
+    .step strong { display: block; color: var(--espresso); font-size: 14px; }
+    .step p { margin: 3px 0 0; color: var(--muted); font-size: 12px; }
+    .faq { background: var(--paper); }
+    .faq-list { max-width: 800px; margin: auto; border-top: 1px solid var(--line); }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 18px 0; border: 0; background: transparent; color: var(--espresso); text-align: left; font-weight: 600; }
+    .faq-question span:last-child { color: var(--coffee); font-size: 22px; }
+    .faq-answer { display: none; padding: 0 36px 18px 0; color: var(--muted); font-size: 13px; }
+    .faq-item.open .faq-answer { display: block; }
+    .footer { padding: 48px 0 20px; background: var(--espresso); color: #e8d8c7; }
+    .footer-grid { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 42px; padding-bottom: 35px; }
+    .footer .brand-name { color: white; }
+    .footer p, .footer a { color: #c8b5a2; font-size: 12px; }
+    .footer h3 { margin: 0 0 12px; color: #e9bd83; font-size: 12px; letter-spacing: .08em; }
+    .footer-links { display: grid; gap: 5px; }
+    .newsletter { display: flex; margin-top: 10px; }
+    .newsletter input { min-width: 0; flex: 1; padding: 10px; border: 1px solid #70553e; background: rgba(255,255,255,.07); color: white; }
+    .newsletter button { padding: 0 13px; border: 0; background: #c48b58; color: var(--espresso); font-size: 12px; font-weight: 700; }
+    .copyright { display: flex; justify-content: space-between; gap: 16px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.15); color: #aa9480; font: 10px var(--en); letter-spacing: .08em; }
+    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 40; max-width: calc(100vw - 44px); padding: 13px 17px; border-left: 3px solid var(--gold); background: var(--espresso); color: white; font-size: 13px; opacity: 0; transform: translateY(12px); pointer-events: none; transition: .25s ease; }
+    .toast.show { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .nav-links { gap: 14px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .story-grid, .brew-grid { gap: 36px; }
+      .hero-stamp { right: 5%; width: 120px; height: 120px; }
+    }
+    @media (max-width: 720px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      .nav { min-height: 64px; }
+      .menu-button { display: grid; place-items: center; }
+      .nav-links { position: absolute; top: 64px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 16px 16px; border-bottom: 1px solid var(--line); background: var(--cream); }
+      .nav-links.open { display: grid; }
+      .nav-links a { display: block; padding: 11px 8px; }
+      .cart-button { min-width: 40px; padding: 0 8px; }
+      .hero { min-height: 620px; }
+      .hero::before { inset: 0; opacity: .8; background-position: 58% center; }
+      .hero::after { right: -120px; }
+      .hero-content { padding-block: 86px 110px; }
+      .hero-copy { max-width: 460px; font-size: 14px; }
+      .hero-stamp { right: 22px; bottom: 22px; width: 90px; height: 90px; }
+      .hero-stamp strong { font-size: 22px; }
+      .hero-stamp span { font-size: 9px; }
+      .promise { grid-template-columns: 1fr; }
+      .promise div { padding: 11px; }
+      .promise div + div { border-top: 1px solid var(--line); border-left: 0; }
+      .section { padding: 70px 0; }
+      .product-grid { grid-template-columns: 1fr; gap: 14px; }
+      .product { display: grid; grid-template-columns: 38% 1fr; }
+      .product-image { height: 100%; min-height: 208px; }
+      .product-info { padding: 14px; }
+      .product h3 { font-size: 17px; }
+      .flavor { min-height: auto; }
+      .product-bottom { align-items: flex-start; flex-direction: column; }
+      .story-grid, .brew-grid { grid-template-columns: 1fr; }
+      .story-visual { min-height: 310px; }
+      .brew-panel { padding: 24px 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+      .copyright { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .brand-mark { width: 35px; }
+      .brand-name { font-size: 15px; }
+      .nav-tools { gap: 7px; }
+      .hero h1 { font-size: 40px; }
+      .button { padding-inline: 14px; }
+      .product { grid-template-columns: 34% 1fr; }
+      .product-image { min-height: 230px; }
+      .product-bottom { gap: 7px; }
+      .add-button { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-grid > :first-child { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">本週新鮮烘焙出貨 ｜ <strong>全館滿 NT$ 799 免運</strong> ｜ 首購輸入 JIAJIA100 現折 NT$ 100</div>
+  <header class="header">
+    <nav class="nav wrap" aria-label="主要導覽">
+      <a class="brand" href="#home" aria-label="假假咖啡首頁">
+        <span class="brand-mark" aria-hidden="true">假</span>
+        <span><span class="brand-name">假假咖啡</span><span class="brand-en">JIA JIA COFFEE</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#beans">精選咖啡豆</a></li>
+        <li><a href="#story">品牌理念</a></li>
+        <li><a href="#brew">手沖指南</a></li>
+        <li><a href="#faq">常見問題</a></li>
+      </ul>
+      <div class="nav-tools">
+        <button class="cart-button" type="button" aria-label="購物車商品數量"><span>購物車</span><span class="cart-count" id="cartCount">0</span></button>
+        <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-label="開啟導覽選單">☰</button>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap"><div class="hero-content">
+        <p class="eyebrow">HONEST BEANS · FRESHLY ROASTED</p>
+        <h1>名為假假，<br>豆子真香。<br>一杯<em>純粹好手沖</em>的日常。</h1>
+        <p class="hero-copy">誰說手沖一定要擺架子？嚴選好產區、每週新鮮烘焙，不做花俏炒作，只把每一粒豆子的香氣，交給你的日常。</p>
+        <div class="actions"><a class="button button-gold" href="#beans">挑選今日手沖豆 <span aria-hidden="true">→</span></a><a class="button button-ghost" href="#story">認識假假咖啡</a></div>
+        <p class="hero-note">TAIWAN · SMALL BATCH ROASTING · EST. 2025</p>
+      </div></div>
+      <div class="hero-stamp" aria-label="建議沖煮水溫 92 度"><strong>92°C</strong><span>建議沖煮水溫</span></div>
+    </section>
+    <div class="promise" aria-label="品牌承諾"><div><strong>每週新鮮現烘</strong>　週二、週五出貨</div><div><strong>滿 NT$ 799 免運</strong>　新鮮送到家</div><div><strong>免費手沖代磨</strong>　下單備註濾杯即可</div></div>
+    <section class="section products" id="beans">
+      <div class="wrap">
+        <header class="section-head"><p class="section-kicker">FRESHLY ROASTED SELECTION</p><h2 class="section-title">今天，想沖哪一種香氣？</h2><p class="section-copy">從明亮花果到溫潤堅果，替日常找到一包喝得剛剛好的豆子。</p></header>
+        <div class="filters" role="group" aria-label="依烘焙度篩選商品"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="light">淺焙</button><button class="filter" data-filter="medium">中焙</button><button class="filter" data-filter="dark">中深焙</button><button class="filter" data-filter="bundle">組合包</button></div>
+        <div class="product-grid">
+          <article class="product" data-category="light"><div class="product-image"><img src="https://images.unsplash.com/photo-1587734195503-904fca47e0e9?auto=format&fit=crop&w=700&q=80" alt="衣索比亞日曬咖啡豆" loading="lazy"><span class="roast-label">淺焙 LIGHT</span></div><div class="product-info"><p class="origin">ETHIOPIA · YIRGACHEFFE</p><h3>耶加雪菲 經典日曬</h3><p class="flavor">茉莉花香・完熟蜜桃・佛手柑</p><div class="product-bottom"><span class="price">NT$ 360 <small>/ 200g</small></span><button class="add-button" data-name="耶加雪菲 經典日曬">加入購物車 ＋</button></div></div></article>
+          <article class="product" data-category="medium"><div class="product-image"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&w=700&q=80" alt="哥倫比亞水洗咖啡豆" loading="lazy"><span class="roast-label">中焙 MEDIUM</span></div><div class="product-info"><p class="origin">COLOMBIA · HUILA</p><h3>蕙蘭 堅果太妃糖</h3><p class="flavor">烤榛果・太妃糖・柔和柑橘甜</p><div class="product-bottom"><span class="price">NT$ 320 <small>/ 200g</small></span><button class="add-button" data-name="蕙蘭 堅果太妃糖">加入購物車 ＋</button></div></div></article>
+          <article class="product" data-category="medium"><div class="product-image"><img src="https://images.unsplash.com/photo-1610632380989-680fe40816c6?auto=format&fit=crop&w=700&q=80" alt="假假咖啡日常配方豆" loading="lazy"><span class="roast-label">人氣配方</span></div><div class="product-info"><p class="origin">JIA JIA HOUSE BLEND</p><h3>日常相伴 手沖配方</h3><p class="flavor">牛奶巧克力・烤核桃・黑糖尾韻</p><div class="product-bottom"><span class="price">NT$ 280 <small>/ 200g</small></span><button class="add-button" data-name="日常相伴 手沖配方">加入購物車 ＋</button></div></div></article>
+          <article class="product" data-category="light"><div class="product-image"><img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?auto=format&fit=crop&w=700&q=80" alt="肯亞水洗咖啡豆" loading="lazy"><span class="roast-label">淺中焙 LIGHT-MED</span></div><div class="product-info"><p class="origin">KENYA · KIRINYAGA</p><h3>肯亞 AA 烏龍黑醋栗</h3><p class="flavor">黑醋栗・洛神花・烏龍茶感</p><div class="product-bottom"><span class="price">NT$ 380 <small>/ 200g</small></span><button class="add-button" data-name="肯亞 AA 烏龍黑醋栗">加入購物車 ＋</button></div></div></article>
+          <article class="product" data-category="dark"><div class="product-image"><img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="瓜地馬拉中深焙咖啡" loading="lazy"><span class="roast-label">中深焙 DARK</span></div><div class="product-info"><p class="origin">GUATEMALA · ANTIGUA</p><h3>安堤瓜 花神黑巧</h3><p class="flavor">黑巧克力・烤杏仁・煙燻楓糖</p><div class="product-bottom"><span class="price">NT$ 340 <small>/ 200g</small></span><button class="add-button" data-name="安堤瓜 花神黑巧">加入購物車 ＋</button></div></div></article>
+          <article class="product" data-category="bundle"><div class="product-image"><img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=700&q=80" alt="手沖咖啡豆三入組" loading="lazy"><span class="roast-label">新手嚐鮮組</span></div><div class="product-info"><p class="origin">THREE ORIGINS · ONE BOX</p><h3>手沖愛好者嚐鮮 3 入組</h3><p class="flavor">花果、堅果、平衡風味一次收齊</p><div class="product-bottom"><span class="price">NT$ 799 <small>/ 3 × 120g</small></span><button class="add-button" data-name="手沖愛好者嚐鮮 3 入組">加入購物車 ＋</button></div></div></article>
+        </div>
+      </div>
+    </section>
+    <section class="section story" id="story"><div class="wrap story-grid">
+      <div class="story-visual" aria-label="假假咖啡品牌圖像"><span class="story-mark">假</span><span class="story-caption">一杯日常好咖啡，簡單就好。</span></div>
+      <div class="story-copy"><p class="section-kicker">OUR PHILOSOPHY</p><h2>名叫「假假」，<br>風味卻很真實。</h2><p>在精品咖啡名詞滿天飛的年代，我們想留住喝咖啡最單純的快樂。假假咖啡不做昂貴噱頭，只選好產區的咖啡豆，以穩定烘焙帶出自然甜感與花果香。</p><p>手沖不必是繁複的儀式。每天早晨隨手注水，深吸一口香氣，就能為生活留一段舒服的空白。</p><ul class="values"><li>產區、海拔與處理法清楚標示</li><li>每週少量烘焙，出貨前新鮮封裝</li><li>提供免費手沖研磨代磨服務</li></ul></div>
+    </div></section>
+    <section class="section brew" id="brew"><div class="wrap">
+      <header class="section-head"><p class="section-kicker">POUR OVER, YOUR WAY</p><h2 class="section-title">讓好豆，遇見剛好的水。</h2><p class="section-copy">調整粉量與粉水比，快速換算今日手沖的注水量。</p></header>
+      <div class="brew-grid"><div class="brew-panel"><h3>手沖粉水比計算</h3><div class="range-row"><label for="dose">咖啡粉量</label><input id="dose" type="range" min="10" max="30" value="15"><span class="range-value"><span id="doseValue">15</span>g</span></div><div class="range-row"><span>粉水比</span><div class="ratio-row"><button class="ratio" data-ratio="14">1:14</button><button class="ratio active" data-ratio="15">1:15</button><button class="ratio" data-ratio="16">1:16</button><button class="ratio" data-ratio="17">1:17</button></div></div><div class="brew-result"><div class="result-cell"><span>建議總水量</span><strong id="waterValue">225 ml</strong></div><div class="result-cell"><span>悶蒸水量</span><strong id="bloomValue">30 ml</strong></div></div></div>
+        <div><p class="section-kicker">A SIMPLE BREWING GUIDE</p><h2 class="section-title">三個步驟，沖出日常好風味。</h2><div class="steps"><div class="step"><span class="step-num">01</span><div><strong>研磨，先聞見期待</strong><p>15g 中細研磨，讓香氣從指尖開始展開。</p></div></div><div class="step"><span class="step-num">02</span><div><strong>悶蒸，等第一個呼吸</strong><p>以約 92°C 熱水浸潤咖啡粉，等待 30 秒。</p></div></div><div class="step"><span class="step-num">03</span><div><strong>注水，保持自己的節奏</strong><p>穩定畫圈注水，讓清澈風味慢慢落入杯中。</p></div></div></div></div>
+      </div>
+    </div></section>
+    <section class="section faq" id="faq"><div class="wrap"><header class="section-head"><p class="section-kicker">GOOD TO KNOW</p><h2 class="section-title">關於咖啡豆的小問題</h2></header><div class="faq-list">
+      <div class="faq-item open"><button class="faq-question" aria-expanded="true"><span>收到咖啡豆後需要養豆嗎？</span><span>−</span></button><div class="faq-answer">建議烘焙後稍作養豆，淺焙約 5 至 7 天、中焙約 3 至 5 天，風味會更穩定。烘焙日期會標示於包裝上。</div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>沒有磨豆機，可以請你們代磨嗎？</span><span>＋</span></button><div class="faq-answer">可以，提供免費手沖代磨。下單時備註濾杯種類，例如 V60 或蛋糕濾杯，我們會依沖煮方式調整研磨粗細。</div></div>
+      <div class="faq-item"><button class="faq-question" aria-expanded="false"><span>咖啡豆應該如何保存？</span><span>＋</span></button><div class="faq-answer">密封後放在陰涼、乾燥、避免日照的地方即可。避免放入冰箱，以免吸收濕氣與異味；開封後建議盡早品飲。</div></div>
+    </div></div></section>
+  </main>
+  <footer class="footer"><div class="wrap"><div class="footer-grid">
+    <div><a class="brand" href="#home"><span class="brand-mark">假</span><span><span class="brand-name">假假咖啡</span><span class="brand-en">JIA JIA COFFEE</span></span></a><p>名為假假，豆子真香。為手沖咖啡喜好者準備的日常好豆。</p></div>
+    <div><h3>探索假假</h3><div class="footer-links"><a href="#beans">本週精選咖啡豆</a><a href="#story">品牌理念</a><a href="#brew">手沖指南</a><a href="#faq">常見問題</a></div></div>
+    <div><h3>每週新鮮豆單</h3><p>訂閱電子報，收到本週新豆與手沖靈感。</p><form class="newsletter" id="newsletter"><input type="email" placeholder="Email 信箱" aria-label="電子郵件地址" required><button type="submit">訂閱</button></form></div>
+  </div><div class="copyright"><span>© 2026 JIA JIA COFFEE. ALL RIGHTS RESERVED.</span><span>ROAST FRESH · BREW SLOW</span></div></div></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    let cartCount = 0;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2500);
+    }
+
+    document.querySelectorAll(".filter").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelector(".filter.active")?.classList.remove("active");
+        button.classList.add("active");
+        document.querySelectorAll(".product").forEach((product) => {
+          product.hidden = button.dataset.filter !== "all" && product.dataset.category !== button.dataset.filter;
+        });
+      });
+    });
+
+    document.querySelectorAll(".add-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        cartCount += 1;
+        document.getElementById("cartCount").textContent = cartCount;
+        showToast(`已將「${button.dataset.name}」加入購物車`);
+      });
+    });
+
+    let ratio = 15;
+    const dose = document.getElementById("dose");
+    function updateBrew() {
+      const grams = Number(dose.value);
+      document.getElementById("doseValue").textContent = grams;
+      document.getElementById("waterValue").textContent = `${grams * ratio} ml`;
+      document.getElementById("bloomValue").textContent = `${grams * 2} ml`;
+    }
+    dose.addEventListener("input", updateBrew);
+    document.querySelectorAll(".ratio").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelector(".ratio.active")?.classList.remove("active");
+        button.classList.add("active");
+        ratio = Number(button.dataset.ratio);
+        updateBrew();
+      });
+    });
+
+    document.querySelectorAll(".faq-question").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        const isOpen = item.classList.toggle("open");
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.lastElementChild.textContent = isOpen ? "−" : "＋";
+      });
+    });
+
+    const menuButton = document.getElementById("menuButton");
+    const navLinks = document.getElementById("navLinks");
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "關閉導覽選單" : "開啟導覽選單");
+      menuButton.textContent = isOpen ? "×" : "☰";
+    });
+    navLinks.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "開啟導覽選單");
+      menuButton.textContent = "☰";
+    }));
+
+    document.getElementById("newsletter").addEventListener("submit", (event) => {
+      event.preventDefault();
+      showToast("謝謝訂閱，期待與你分享本週豆單！");
+      event.currentTarget.reset();
+    });
+    updateBrew();
+  </script>
+</body>
+</html>
