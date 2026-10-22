@@ -1411,6 +1411,7 @@
     }
 
     .faq-question {
+      width: 100%;
       padding: 20px 24px;
       display: flex;
       justify-content: space-between;
@@ -1419,6 +1420,7 @@
       font-weight: 700;
       font-size: 1.02rem;
       color: var(--coffee-900);
+      text-align: left;
       user-select: none;
     }
 
@@ -1984,7 +1986,7 @@
           </a>
 
           <!-- 手機選單開關 -->
-          <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="切換選單">
+          <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">
             <span></span>
             <span></span>
             <span></span>
@@ -2645,11 +2647,11 @@
 
       <div class="faq-container">
         <div class="faq-item active">
-          <div class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" type="button" aria-expanded="true" aria-controls="faqAnswer1" onclick="toggleFaq(this)">
             <span>收到咖啡豆後需要「養豆」嗎？需要放幾天？</span>
             <span class="faq-toggle-icon">+</span>
-          </div>
-          <div class="faq-answer">
+          </button>
+          <div class="faq-answer" id="faqAnswer1">
             需要！剛烘好的新鮮咖啡豆體內含有豐富的二氧化碳氣體，容易影響手沖萃取的水流接觸。建議：
             <br>• <strong>淺焙豆：</strong>烘焙日後 5 - 7 天開始沖煮，花果香氣與甜感最純淨。
             <br>• <strong>中焙／中深焙豆：</strong>烘焙日後 3 - 5 天即可開喝。假假咖啡均於出貨單上清楚註明烘焙日期。
@@ -2657,31 +2659,31 @@
         </div>
 
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faqAnswer2" onclick="toggleFaq(this)">
             <span>我沒有磨豆機，可以請你們代磨手沖粗細嗎？</span>
             <span class="faq-toggle-icon">+</span>
-          </div>
-          <div class="faq-answer">
+          </button>
+          <div class="faq-answer" id="faqAnswer2">
             完全沒問題且「完全免費」！我們使用專業級德國 Mahlkönig EK43 磨豆機代磨，顆粒立體均勻。只要在結帳頁面或訂單備註註明「代磨手沖刻度」，並註明您的濾杯種類（如 V60、蛋糕杯），我們便會在出貨當天現磨現封！
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faqAnswer3" onclick="toggleFaq(this)">
             <span>運費如何計算？多久可以收到？</span>
             <span class="faq-toggle-icon">+</span>
-          </div>
-          <div class="faq-answer">
+          </button>
+          <div class="faq-answer" id="faqAnswer3">
             全館滿 NT$ 799 即享超商取貨或宅配免運費（未達門檻運費一律 $65）。我們每週二、五烘豆出貨，下單後約 2-3 個工作天即可送達您的指定門市或住址。
           </div>
         </div>
 
         <div class="faq-item">
-          <div class="faq-question" onclick="toggleFaq(this)">
+          <button class="faq-question" type="button" aria-expanded="false" aria-controls="faqAnswer4" onclick="toggleFaq(this)">
             <span>咖啡豆該如何正確保存？需要冰在冰箱嗎？</span>
             <span class="faq-toggle-icon">+</span>
-          </div>
-          <div class="faq-answer">
+          </button>
+          <div class="faq-answer" id="faqAnswer4">
             <strong>千萬不要直接放冷藏！</strong> 冰箱濕氣重且有異味，咖啡豆極易吸附異味而變質。請將咖啡豆連同假假咖啡的單向排氣鋁箔袋密封，置於陰涼、通風、乾燥且避免陽光直射的常溫櫃子即可。開封後建議在 30 天內品飲完畢。
           </div>
         </div>
@@ -2812,7 +2814,7 @@
   </div>
 
   <!-- 吐司通知訊息 Toast Notification -->
-  <div class="toast-msg" id="toastMsg">
+  <div class="toast-msg" id="toastMsg" role="status" aria-live="polite" aria-atomic="true">
     <span id="toastText">已成功加入購物車！</span>
   </div>
 
@@ -3078,12 +3080,16 @@
     const navLinks = document.getElementById("navLinks");
 
     mobileMenuToggle.addEventListener("click", () => {
-      navLinks.classList.toggle("mobile-open");
+      const isOpen = navLinks.classList.toggle("mobile-open");
+      mobileMenuToggle.setAttribute("aria-expanded", String(isOpen));
+      mobileMenuToggle.setAttribute("aria-label", isOpen ? "關閉導覽選單" : "開啟導覽選單");
     });
 
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navLinks.classList.remove("mobile-open");
+        mobileMenuToggle.setAttribute("aria-expanded", "false");
+        mobileMenuToggle.setAttribute("aria-label", "開啟導覽選單");
       });
     });
 
@@ -3092,7 +3098,8 @@
        ========================================================================== */
     function toggleFaq(element) {
       const faqItem = element.parentElement;
-      faqItem.classList.toggle("active");
+      const isOpen = faqItem.classList.toggle("active");
+      element.setAttribute("aria-expanded", String(isOpen));
     }
 
     // 初始化計算機
